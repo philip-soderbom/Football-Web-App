@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { StateService } from 'src/app/services/state.service';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +8,9 @@ import { StateService } from 'src/app/services/state.service';
 })
 export class HeaderComponent implements OnInit {
 
-  currentSearch!: string | null;
+  currentSearch!: string;
 
-  constructor(private router: Router, private stateService: StateService) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     if (window.localStorage.length > 0) {

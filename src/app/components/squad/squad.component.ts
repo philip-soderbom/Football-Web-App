@@ -10,17 +10,16 @@ import { Squad } from 'src/app/interfaces/Squad';
 })
 export class SquadComponent implements OnInit {
 
+  errorOccurred!: boolean;
   validSearch: boolean = false;
-  teamIds!: any[];
-  teamDisplayData!: any;
+  teamName!: string;
 
   squad!: any[];
 
-  // playerName!: string;
-  // playerId!: number;
-  // playerAge!: number;
-  // playerNumber!: number;
-  // position!: string;
+  goalkeepers: any[] = [];
+  defenders:   any[] = [];
+  midfielders: any[] = [];
+  attackers:   any[] = [];
 
 
   constructor(private teamService: TeamService, private stateService: StateService) { }
@@ -38,26 +37,38 @@ export class SquadComponent implements OnInit {
         this.fetchSquad(teamId)
       }
 
-      // this.teamIds = this.stateService.ids;
-      // this.stateService.ids = [];
-  
-      // this.teamDisplayData = this.stateService.displayData;
-      // this.stateService.displayData = [];
-  
-
       this.validSearch = true;
-      //this.fetchSquad();
+
+
     }
 
     
   }
 
   fetchSquad(teamId: string) {
-    //let teamId = this.teamIds[0][1];
     this.teamService.getSquad(teamId).subscribe(squad => {
-      // console.log(this.teamDisplayData[0][1] + " squad: ", squad.response[0].players);
-      console.log("squad fetched: ", squad.response[0].players);
-      this.squad = squad.response[0].players;     
+      if (squad.response[0] !== undefined) {
+        console.log("squad fetched: ", squad.response[0].players);
+        this.squad = squad.response[0].players;
+        this.teamName = squad.response[0].team.name;
+
+        // sort players based on position
+        this.squad.map((player) => {
+          let playerPosition = player.position;
+          switch (playerPosition){
+            case "Goalkeeper": this.goalkeepers.push(player); break;
+            case "Defender": this.defenders.push(player); break;
+            case "Midfielder": this.midfielders.push(player); break;
+            case "Attacker": this.attackers.push(player); break;
+            default: break;
+          }
+        })
+
+      }
+      else {
+        this.errorOccurred = true;
+      }
+           
     })
   }
 

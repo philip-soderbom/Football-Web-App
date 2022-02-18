@@ -17,7 +17,7 @@ export class StateService {
   constructor() { }
 
 
-  fillTeamData(teamName: string, teamId: number, country: string, foundedYear: number, stadium: string, stadiumId: number, address: string, city: string, capacity: number) {
+  fillTeamData(teamName: string, teamId: number, country: string, foundedYear: number, teamLogo: string, stadium: string, stadiumId: number, address: string, city: string, capacity: number, stadiumImage: string) {
     this.ids = [
       ["Club ID", teamId],
       ["Stadium ID", stadiumId],
@@ -33,7 +33,4 @@ export class StateService {
     ];
   }
 
-  fillSquadData() {
-    
-  }
 }

@@ -1,22 +1,68 @@
-<h1>Squad</h1>
-<div *ngIf="validSearch">
-    <!-- <h3>Current search: {{teamDisplayData[0][1]}}</h3>
+<h1>{{teamName}} Squad</h1>
+<a routerLink="/">Make new search</a>
 
-    <h2>This is the {{teamDisplayData[0][1]}} squad:</h2> -->
-    <div *ngFor="let player of squad">
+<div *ngIf="validSearch">
+    <h1>Goalkeepers</h1>
+    <div *ngFor="let goalkeeper of goalkeepers">
         <mat-card class="player-card">
-            <mat-card-title>{{player.name}} #{{player.number}}</mat-card-title>
-            <mat-card-subtitle>Position: {{player.position}}</mat-card-subtitle>
-            <mat-card-subtitle>Age: {{player.age}}</mat-card-subtitle>
+            <mat-card-title>{{goalkeeper.name}} #{{goalkeeper.number}}</mat-card-title>
+            <mat-card-subtitle>Position: {{goalkeeper.position}}</mat-card-subtitle>
+            <mat-card-subtitle>Age: {{goalkeeper.age}}</mat-card-subtitle>
+            <img [src]="goalkeeper.photo" alt="player photo">
+            <button mat-stroked-button color="primary">View more</button>
+        </mat-card>
+    </div>
+
+    <h1>Defenders</h1>
+    <div *ngFor="let defender of defenders">
+        <mat-card class="player-card">
+            <mat-card-title>{{defender.name}} #{{defender.number}}</mat-card-title>
+            <mat-card-subtitle>Position: {{defender.position}}</mat-card-subtitle>
+            <mat-card-subtitle>Age: {{defender.age}}</mat-card-subtitle>
+            <img [src]="defender.photo" alt="player photo">
+            <button mat-stroked-button color="primary">View more</button>
+        </mat-card>
+    </div>
+
+    <h1>Midfielders</h1>
+    <div *ngFor="let midfielder of midfielders">
+        <mat-card class="player-card">
+            <mat-card-title>{{midfielder.name}} #{{midfielder.number}}</mat-card-title>
+            <mat-card-subtitle>Position: {{midfielder.position}}</mat-card-subtitle>
+            <mat-card-subtitle>Age: {{midfielder.age}}</mat-card-subtitle>
+            <img [src]="midfielder.photo" alt="player photo">
+            <button mat-stroked-button color="primary">View more</button>
+        </mat-card>
+    </div>
+
+    <h1>Attackers</h1>
+    <div *ngFor="let attacker of attackers">
+        <mat-card class="player-card">
+            <mat-card-title>{{attacker.name}} #{{attacker.number}}</mat-card-title>
+            <mat-card-subtitle>Position: {{attacker.position}}</mat-card-subtitle>
+            <mat-card-subtitle>Age: {{attacker.age}}</mat-card-subtitle>
+            <img [src]="attacker.photo" alt="player photo">
+            <button mat-stroked-button color="primary">View more</button>
         </mat-card>
     </div>
 
 
-</div>
 
-<a routerLink="/">Make new search</a>
+    <!-- <div *ngFor="let player of squad">
+        <mat-card class="player-card">
+            <mat-card-title>{{player.name}} #{{player.number}}</mat-card-title>
+            <mat-card-subtitle>Position: {{player.position}}</mat-card-subtitle>
+            <mat-card-subtitle>Age: {{player.age}}</mat-card-subtitle>
+            <button mat-stroked-button color="primary">View more</button>
+        </mat-card>
+    </div> -->
+</div>
 
 <div *ngIf="!validSearch">
     <h1>You have not searched for any team yet</h1>
     <a routerLink="/">Go to Start</a>
+</div>
+
+<div *ngIf="errorOccurred">
+    <p>Something went wrong...</p>
 </div>

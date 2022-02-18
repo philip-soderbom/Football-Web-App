@@ -11,6 +11,7 @@ export interface Squad {
             age: number;
             number: number;
             position: string;
+            photo: string;
         }]
     }]
 }

@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -21,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const appRoutes: Routes = [
   {path: '', component: StartComponent},
   {path: 'team', component: TeamComponent},
-  {path: 'squad', component: SquadComponent}
+  {path: 'squad', component: SquadComponent},
+  // {path: 'player/:id', component: ...},
 ]
 
 @NgModule({
@@ -42,7 +45,9 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     MatCardModule,
     MatTabsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatButtonModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
