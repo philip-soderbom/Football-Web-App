@@ -1,0 +1,17 @@
+<h1>Team</h1>
+<div *ngIf="validSearch">
+    <h1>Some data on the team you searched for: </h1>
+
+</div>
+<div *ngIf="!validSearch">
+    <h1>You have not searched for any team yet</h1>
+    <a routerLink="/">Go to Start</a>
+</div>
+
+<a routerLink="/">Make new search</a>
+
+<div>
+    <ul *ngFor="let data of teamDisplayData">
+        <li>{{data[0]}}: {{data[1]}}</li>
+    </ul>
+</div>

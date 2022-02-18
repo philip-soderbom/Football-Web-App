@@ -1,0 +1,22 @@
+<h1>Squad</h1>
+<div *ngIf="validSearch">
+    <!-- <h3>Current search: {{teamDisplayData[0][1]}}</h3>
+
+    <h2>This is the {{teamDisplayData[0][1]}} squad:</h2> -->
+    <div *ngFor="let player of squad">
+        <mat-card class="player-card">
+            <mat-card-title>{{player.name}} #{{player.number}}</mat-card-title>
+            <mat-card-subtitle>Position: {{player.position}}</mat-card-subtitle>
+            <mat-card-subtitle>Age: {{player.age}}</mat-card-subtitle>
+        </mat-card>
+    </div>
+
+
+</div>
+
+<a routerLink="/">Make new search</a>
+
+<div *ngIf="!validSearch">
+    <h1>You have not searched for any team yet</h1>
+    <a routerLink="/">Go to Start</a>
+</div>
