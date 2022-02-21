@@ -1,0 +1,31 @@
+.player-card {
+    margin: 25px 0;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas: "info photo" "button photo";
+}
+
+.info {
+    grid-area: info;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+button {
+    grid-area: button;
+}
+
+.photo {
+    grid-area: photo;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    border-radius: 50%;
+    max-height: 120px;
+}

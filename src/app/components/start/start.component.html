@@ -1,8 +1,9 @@
 <h1>Start</h1>
-<app-form (onSearch)="printSearch($event)"></app-form>
+<app-form (onSearch)="searchTeam($event)"></app-form>
 
 <div *ngIf="validSearch">
-    <h2>You searched for the team: {{teamName}}</h2>
+    <h2>Current team searched for: {{teamName}}</h2>
+    <app-team [teamName]="teamName" [teamData]="teamDisplayData" [logo]="teamLogo" [stadiumImg]="stadiumImage"></app-team>
 </div>
 <div *ngIf="!validSearch">
     <h1>Your search gave no results... Try again</h1>

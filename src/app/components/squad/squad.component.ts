@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { TeamService } from 'src/app/services/team.service';
-import { StateService } from 'src/app/services/state.service';
-import { Squad } from 'src/app/interfaces/Squad';
 
 @Component({
   selector: 'app-squad',
@@ -9,48 +8,42 @@ import { Squad } from 'src/app/interfaces/Squad';
   styleUrls: ['./squad.component.css']
 })
 export class SquadComponent implements OnInit {
+  private subscription!: Subscription;
 
   errorOccurred!: boolean;
   validSearch: boolean = false;
   teamName!: string;
 
   squad!: any[];
-
   goalkeepers: any[] = [];
   defenders:   any[] = [];
   midfielders: any[] = [];
   attackers:   any[] = [];
 
+  playerUrl: string = `/player/:`;
 
-  constructor(private teamService: TeamService, private stateService: StateService) { }
+  constructor(private teamService: TeamService) { }
 
   ngOnInit(): void {
-
-    
     // check if the fetch from the form has been approved
     if (window.localStorage.length > 0) {
       console.log("Valid search stored in localStorage")
+      this.validSearch = true;
       let teamSearch = window.localStorage.getItem('search');
       if (typeof teamSearch === 'string') {
         let obj: string[] = JSON.parse(teamSearch);
         let teamId = obj[1];
         this.fetchSquad(teamId)
       }
-
-      this.validSearch = true;
-
-
-    }
-
-    
+    }    
   }
 
   fetchSquad(teamId: string) {
-    this.teamService.getSquad(teamId).subscribe(squad => {
-      if (squad.response[0] !== undefined) {
-        console.log("squad fetched: ", squad.response[0].players);
-        this.squad = squad.response[0].players;
-        this.teamName = squad.response[0].team.name;
+    this.subscription = this.teamService.getSquad(teamId).subscribe(data => {
+      if (data.response[0] !== undefined) {
+        console.log("squad fetched: ", data.response[0].players);
+        this.squad = data.response[0].players;
+        this.teamName = data.response[0].team.name;
 
         // sort players based on position
         this.squad.map((player) => {
@@ -70,6 +63,10 @@ export class SquadComponent implements OnInit {
       }
            
     })
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

@@ -3,15 +3,8 @@
 <form (ngSubmit)="onTeamSearch()">
     <div class="form-control">
         <label for="teamSearch">Team:</label>
-        <input type="text" name="teamSearch" [(ngModel)]="teamSearch" id="teamSearch">
+        <input type="text" name="teamSearch" [(ngModel)]="teamSearch" id="teamSearch" placeholder="Enter search for football team ...">
     </div>
-    <input type="submit" value="Search team" class="btn btn-block">
+    <!-- <input type="submit" value="Search team" class="btn btn-block"> -->
+    <button mat-flat-button color="primary" type="submit">Search</button>
 </form>
-
-<!-- <mat-form-field appearance="legacy">
-    <mat-label for="teamSearch">Team search:</mat-label>
-    <input matInput placeholder="Enter a team" type="text" name="teamSearch" [(ngModel)]="teamSearch">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
-    <input matInput type="submit" value="Search team" class="btn btn-block">
-</mat-form-field> -->

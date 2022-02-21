@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StateService } from 'src/app/services/state.service';
 import { TeamService } from 'src/app/services/team.service';
-import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-start',
@@ -9,22 +8,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./start.component.css']
 })
 export class StartComponent implements OnInit {
+  private subscription!: Subscription;
 
   validSearch: boolean = true;
-
   teamId!: number;
   teamName!: string;
-  country!: string;
-  foundedYear!: number;
-  
-  stadiumId!: number;
-  stadium!: string;
-  address!: string;
-  city!: string;
-  capacity!: number;
+  teamDisplayData!: any[];
+  teamLogo!: string;
+  stadiumImage!: string;
 
-  constructor(private teamService: TeamService, private stateService: StateService) {
-  }
+  constructor(private teamService: TeamService) {}
 
   ngOnInit(): void {
     if (window.localStorage.length > 0) {
@@ -32,60 +25,45 @@ export class StartComponent implements OnInit {
       if (typeof teamSearch === 'string'){
         let obj: string[] = JSON.parse(teamSearch);
         let teamName = obj[0];
-        this.printSearch(teamName)
+        this.searchTeam(teamName)
       }
     }
   }
 
-  // coming from child (add-task.ts) and its @Output()
-  printSearch(search: string) {
+  searchTeam(search: string) {
     console.log("you searched for (in start.ts): ", search);
     // fetch from APIFootball
-    this.teamService.getTeam(search).subscribe(data => {
+    this.subscription = this.teamService.getTeam(search).subscribe(data => {
       if (data.response.length > 0) {
         this.validSearch = true;
         console.log("fetched data: ", data);
         console.log("team searched for (in start.ts): ", data.response[0].team.name);
+        let teamData = data.response[0].team;
+        let venueData = data.response[0].venue;
 
-        this.teamName = data.response[0].team.name;
-        this.teamId = data.response[0].team.id;
-        this.country = data.response[0].team.country;
-        this.foundedYear = data.response[0].team.founded;
-        this.stadium = data.response[0].venue.name;
-        this.stadiumId = data.response[0].venue.id;
-        this.address = data.response[0].venue.address;
-        this.city = data.response[0].venue.city;
-        this.capacity = data.response[0].venue.capacity;
+        this.teamName = teamData.name;
+        this.teamId = teamData.id;
+        this.teamLogo = teamData.logo;
+        this.stadiumImage = venueData.image;
 
+        this.teamDisplayData = [
+          ["Club name", teamData.name],
+          [teamData.name + " is based in", teamData.country],
+          ["The club was founded in", teamData.founded],
+          ["Home stadium", venueData.name],
+          ["Adress", venueData.address],
+          ["City", venueData.city],
+          ["Stadium capacity", venueData.capacity],
+        ];
 
         this.storeLocally();      
-        this.transferData();
       }
       else { 
         console.log("invalid search")
         this.validSearch = false;
       }
     })
-  }
 
-  // place fetched data in our StateService to access the same data from other components
-  transferData(): void {
-    this.stateService.ids = [
-      ["Club ID", this.teamId],
-      ["Stadium ID", this.stadiumId],
-    ];
-    this.stateService.displayData = [
-      ["Club name", this.teamName],
-      [this.teamName + " is based in", this.country],
-      ["The club was founded in", this.foundedYear],
-      ["Home stadium", this.stadium],
-      ["Adress", this.address],
-      ["City", this.city],
-      ["Stadium capacity", this.capacity],
-    ];
-
-    this.stateService.valid = true;
-    //this.router.navigate(['/team']);
   }
 
   storeLocally(): void {
@@ -96,6 +74,10 @@ export class StartComponent implements OnInit {
     }
     console.log("Storing %s to localStorage", this.teamName)
     window.localStorage.setItem("search", JSON.stringify([this.teamName, this.teamId]));
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

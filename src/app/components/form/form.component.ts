@@ -19,7 +19,7 @@ export class FormComponent implements OnInit {
     console.log("team search in form.ts: ", this.teamSearch)
     
     let search = this.teamSearch
-    // emitting to parent (app.component.html)
+    // emitting to parent (start.component.html)
     this.onSearch.emit(search)
     this.teamSearch = ""
   }

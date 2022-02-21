@@ -9,7 +9,6 @@ import { MatCardModule } from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
-import {MatGridListModule} from '@angular/material/grid-list';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -18,13 +17,13 @@ import { FormComponent } from './components/form/form.component';
 import { StartComponent } from './components/start/start.component';
 import { SquadComponent } from './components/squad/squad.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PlayerCardComponent } from './components/player-card/player-card.component';
 
 
 const appRoutes: Routes = [
   {path: '', component: StartComponent},
-  {path: 'team', component: TeamComponent},
   {path: 'squad', component: SquadComponent},
-  // {path: 'player/:id', component: ...},
+  //{path: 'player/:id', component: ...},
 ]
 
 @NgModule({
@@ -35,6 +34,7 @@ const appRoutes: Routes = [
     StartComponent,
     FormComponent,
     SquadComponent,
+    PlayerCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +47,6 @@ const appRoutes: Routes = [
     MatTabsModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

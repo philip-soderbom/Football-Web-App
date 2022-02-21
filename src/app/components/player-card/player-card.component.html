@@ -1,0 +1,13 @@
+<div *ngFor="let player of position">
+    <mat-card class="player-card">
+        <div class="info">
+            <mat-card-title>{{player.name}} #{{player.number}}</mat-card-title>
+            <mat-card-subtitle>Position: {{player.position}}</mat-card-subtitle>
+            <mat-card-subtitle>Age: {{player.age}}</mat-card-subtitle>
+        </div>
+        <div class="photo">
+            <img [src]="player.photo" alt="player photo">
+        </div>
+        <button mat-stroked-button color="primary">View more</button>
+    </mat-card>
+</div>
