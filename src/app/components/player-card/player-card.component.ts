@@ -7,7 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PlayerCardComponent implements OnInit {
   @Input() position!: any[];
-  @Input() playerUrl!: string;
+  
+  playerUrl: string = '/player/:';
 
   constructor() { }
 

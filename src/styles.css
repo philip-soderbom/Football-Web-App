@@ -1,22 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
-
-/* * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-} */
-
 html,
 body {
     height: 100%;
 }
 
-body {
+
+/* body {
     margin: 0;
     font-family: "Poppins", sans-serif;
-}
+} */
 
 .app-container {
     max-width: 1200px;

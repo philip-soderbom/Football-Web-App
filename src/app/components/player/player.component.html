@@ -1,0 +1,21 @@
+<mat-card class="example-card">
+    <mat-card-title-group>
+        <mat-card-title>{{firstname}} {{lastname}}</mat-card-title>
+        <mat-card-subtitle>{{age}} years old</mat-card-subtitle>
+        <img mat-card-xl-image [src]="photo">
+        <mat-card-subtitle>
+            <p>Status and data</p>
+            <ul>
+                <li>Height: {{height}}</li>
+                <li>Weight: {{weight}}</li>
+                <li *ngIf="injured">{{name}} is currently injured</li>
+                <li *ngIf="!injured">{{name}} is currently not injured</li>
+            </ul>
+        </mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+        {{firstname}} {{lastname}} is from {{nationality}}, he was born in {{birthCountry}}, {{birthPlace}} in {{birthDate}}.
+    </mat-card-content>
+</mat-card>
+
+<app-player-stats [competitions]="competitions" [data]="data"></app-player-stats>

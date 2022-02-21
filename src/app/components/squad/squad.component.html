@@ -3,16 +3,16 @@
 
 <div *ngIf="validSearch">
     <h1>Goalkeepers</h1>
-    <app-player-card [position]="goalkeepers" [playerUrl]="playerUrl"></app-player-card>
+    <app-player-card [position]="goalkeepers"></app-player-card>
 
     <h1>Defenders</h1>
-    <app-player-card [position]="defenders" [playerUrl]="playerUrl"></app-player-card>
+    <app-player-card [position]="defenders"></app-player-card>
 
     <h1>Midfielders</h1>
-    <app-player-card [position]="midfielders" [playerUrl]="playerUrl"></app-player-card>
+    <app-player-card [position]="midfielders"></app-player-card>
 
     <h1>Attackers</h1>
-    <app-player-card [position]="attackers" [playerUrl]="playerUrl"></app-player-card>
+    <app-player-card [position]="attackers"></app-player-card>
 </div>
 
 <div *ngIf="!validSearch">

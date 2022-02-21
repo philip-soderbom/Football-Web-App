@@ -20,7 +20,6 @@ export class SquadComponent implements OnInit {
   midfielders: any[] = [];
   attackers:   any[] = [];
 
-  playerUrl: string = `/player/:`;
 
   constructor(private teamService: TeamService) { }
 

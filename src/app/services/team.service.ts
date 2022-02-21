@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { Team } from '../interfaces/Team'
 import { Squad } from '../interfaces/Squad'
+import { Player } from '../interfaces/Player';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -22,13 +23,17 @@ export class TeamService {
 
 
   getTeam(search: string): Observable<Team> {
-    // edit API url from function input
-    let editUrl = this.apiBaseURL.concat('teams?name=' + search)
-    return this.http.get<Team>(editUrl, httpOptions);
+    let url = this.apiBaseURL.concat('teams?name=' + search)
+    return this.http.get<Team>(url, httpOptions);
   }
 
   getSquad(search: string): Observable<Squad> {
-    let editUrl = this.apiBaseURL.concat('players/squads?team=' + search)
-    return this.http.get<Squad>(editUrl, httpOptions)
+    let url = this.apiBaseURL.concat('players/squads?team=' + search)
+    return this.http.get<Squad>(url, httpOptions)
+  }
+
+  getPlayer(search: string): Observable<Player> {
+    let url = this.apiBaseURL.concat('players?id=' + search + '&season=2021')
+    return this.http.get<Player>(url, httpOptions)
   }
 }

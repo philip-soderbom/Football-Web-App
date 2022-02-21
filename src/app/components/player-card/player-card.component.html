@@ -8,6 +8,6 @@
         <div class="photo">
             <img [src]="player.photo" alt="player photo">
         </div>
-        <button mat-stroked-button color="primary">View more</button>
+        <button mat-stroked-button color="primary" [routerLink]="playerUrl.concat(player.id)">View more</button>
     </mat-card>
 </div>

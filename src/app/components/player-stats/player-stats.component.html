@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>{{playerName}} Player Season Statistics</h1>
+    <h3>Choose one of the available competitions to see the player's stats in that specific competition</h3>
+
+    <div class="button-container">
+        <div *ngFor="let comp of competitions">
+            <button mat-stroked-button color="primary" (click)="competitionHandler(comp)">{{comp}}</button>
+        </div>
+        <button *ngIf="compChosen" mat-flat-button color="primary" (click)="sumStats()">Season Total</button>
+    </div>
+
+
+
+    <div *ngIf="compChosen">
+        <div *ngIf="!isTotal">
+            <img [src]="competitionLogo" alt="competition logo">
+            <h2>{{competition}} statistics:</h2>
+        </div>
+        <div *ngIf="isTotal">
+            <h2>Total season statistics:</h2>
+        </div>
+        <p *ngFor="let stat of stats">{{stat[0]}}: {{stat[1]}}</p>
+    </div>
+</div>
