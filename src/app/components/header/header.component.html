@@ -1,5 +1,8 @@
-<nav mat-tab-nav-bar>
+<!-- <nav mat-tab-nav-bar>
     <a mat-tab-link routerLink="/">Start</a>
-    <!-- <a mat-tab-link routerLink="/team">Team</a> -->
     <a mat-tab-link routerLink="/squad">Squad</a>
+</nav> -->
+
+<nav mat-tab-nav-bar>
+    <a mat-tab-link *ngFor="let link of links" [routerLink]="link[1]" (click)="changeActive(link[0])" [active]="activeLink == link[0]"> {{link[0]}} </a>
 </nav>

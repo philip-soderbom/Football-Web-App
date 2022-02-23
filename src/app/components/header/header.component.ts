@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-header',
@@ -7,10 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  links: any[] = [['Start', '/'], ['Squad', '/squad']];
+  activeLink!: string;
   currentSearch!: string;
+  bgColor: string = 'blue';
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
     if (window.localStorage.length > 0) {
@@ -20,13 +22,12 @@ export class HeaderComponent implements OnInit {
         let teamName = storedObject[0];
         this.currentSearch = teamName;
       }
-      
     }
-    
   }
 
-  hasRoute(route: string) {
-    return this.router.url === route;
+  changeActive(newActive: string) {
+    this.activeLink = newActive;
   }
+
 
 }

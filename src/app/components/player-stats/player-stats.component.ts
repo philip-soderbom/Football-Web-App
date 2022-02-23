@@ -28,25 +28,33 @@ export class PlayerStatsComponent implements OnInit {
     this.compChosen = true;
     this.isTotal = false;
     let index = this.competitions.findIndex(competition => competition === comp)
-    console.log(index)
-    let stat = this.data[index];
+    let compStats = this.data[index];
 
-    this.competition = stat.league.name;
-    this.competitionLogo = stat.league.logo;
+    console.log("comp stats",compStats)
+
+    this.competition = compStats.league.name;
+    this.competitionLogo = compStats.league.logo;
     this.stats = [
-      ["Appearences", stat.games.appearences],
-      ["Minutes played", stat.games.minutes],
-      ["Goals scored", stat.goals.total],
-      ["Assists provided", stat.goals.assists],
-      ["Passes", stat.passes.total],
-      ["Key passes", stat.passes.key],
-      ["Yellow cards", stat.cards.yellow],
-      ["Red cards", stat.cards.red],
-      ["Tackles", stat.tackles.total],
-      ["Interceptions", stat.tackles.interceptions],
-      ["Attempted dribbles", stat.dribbles.attempts],
-      ["Successful dribbles", stat.dribbles.success]
+      ["Appearences", compStats.games.appearences],
+      ["Minutes played", compStats.games.minutes],
+      ["Goals scored", compStats.goals.total],
+      ["Assists provided", compStats.goals.assists],
+      ["Passes", compStats.passes.total],
+      ["Key passes", compStats.passes.key],
+      ["Yellow cards", compStats.cards.yellow],
+      ["Red cards", compStats.cards.red],
+      ["Tackles", compStats.tackles.total],
+      ["Interceptions", compStats.tackles.interceptions],
+      ["Attempted dribbles", compStats.dribbles.attempts],
+      ["Successful dribbles", compStats.dribbles.success]
     ];
+
+    // check for null or undefined stat
+    this.stats.forEach((stat, i) => {
+      if (stat[1] === null || stat[1] === undefined) {
+        this.stats[i][1] = 0
+      }
+    })
 
   }
 

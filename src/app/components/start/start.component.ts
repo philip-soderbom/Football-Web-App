@@ -67,11 +67,6 @@ export class StartComponent implements OnInit {
   }
 
   storeLocally(): void {
-    // clear previous search and replace with the new search
-    if (window.localStorage.length > 0) {
-      window.localStorage.clear();
-      console.log("localStorage cleared")
-    }
     console.log("Storing %s to localStorage", this.teamName)
     window.localStorage.setItem("search", JSON.stringify([this.teamName, this.teamId]));
   }
