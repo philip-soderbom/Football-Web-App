@@ -1,0 +1,20 @@
+.start-container {
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: "form" "team";
+}
+
+.start-form {
+    grid-area: form;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.start-team {
+    grid-area: team;
+    display: flex;
+    justify-content: center;
+}

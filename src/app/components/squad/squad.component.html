@@ -1,5 +1,4 @@
 <h1>{{teamName}} Squad</h1>
-<!-- <button mat-stroked-button routerLink="/">Make new search</button> -->
 
 <div *ngIf="validSearch">
     <h1>Goalkeepers</h1>
@@ -17,7 +16,6 @@
 
 <div *ngIf="!validSearch">
     <h1>You have not searched for any team yet</h1>
-    <a routerLink="/">Go to Start</a>
 </div>
 
 <div *ngIf="errorOccurred">

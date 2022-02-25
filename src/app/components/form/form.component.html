@@ -1,10 +1,20 @@
 <h2>Search for a football team here: </h2>
 
-<form (ngSubmit)="onTeamSearch()">
+<!-- <form (ngSubmit)="onTeamSearch()">
     <div class="form-control">
         <label for="teamSearch">Team:</label>
         <input type="text" name="teamSearch" [(ngModel)]="teamSearch" id="teamSearch" placeholder="Enter search for football team ...">
     </div>
-    <!-- <input type="submit" value="Search team" class="btn btn-block"> -->
     <button mat-flat-button color="primary" type="submit">Search</button>
+</form> -->
+
+
+<form (ngSubmit)="onTeamSearch()">
+    <div class="inner-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label for="teamSearch">Team search</mat-label>
+            <input required matInput [(ngModel)]="teamSearch" placeholder="Ex. Real Madrid" type="text" name="teamSearch" id="teamSearch">
+        </mat-form-field><br>
+        <button mat-flat-button color="primary" type="submit">Search</button>
+    </div>
 </form>

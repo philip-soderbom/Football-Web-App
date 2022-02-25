@@ -11,22 +11,28 @@ export class StartComponent implements OnInit {
   private subscription!: Subscription;
 
   validSearch: boolean = true;
+  formVisible: boolean = true;
   teamId!: number;
   teamName!: string;
   teamDisplayData!: any[];
   teamLogo!: string;
+  stadium!: string;
   stadiumImage!: string;
 
   constructor(private teamService: TeamService) {}
 
   ngOnInit(): void {
     if (window.localStorage.length > 0) {
+      this.formVisible = false;
       let teamSearch = window.localStorage.getItem('search');
       if (typeof teamSearch === 'string'){
         let obj: string[] = JSON.parse(teamSearch);
         let teamName = obj[0];
         this.searchTeam(teamName)
       }
+    }
+    else {
+      this.validSearch = false;
     }
   }
 
@@ -36,6 +42,8 @@ export class StartComponent implements OnInit {
     this.subscription = this.teamService.getTeam(search).subscribe(data => {
       if (data.response.length > 0) {
         this.validSearch = true;
+        this.formVisible = false;
+        
         console.log("fetched data: ", data);
         console.log("team searched for (in start.ts): ", data.response[0].team.name);
         let teamData = data.response[0].team;
@@ -45,6 +53,7 @@ export class StartComponent implements OnInit {
         this.teamId = teamData.id;
         this.teamLogo = teamData.logo;
         this.stadiumImage = venueData.image;
+        this.stadium = venueData.name;
 
         this.teamDisplayData = [
           ["Club name", teamData.name],
@@ -55,15 +64,19 @@ export class StartComponent implements OnInit {
           ["City", venueData.city],
           ["Stadium capacity", venueData.capacity],
         ];
-
-        this.storeLocally();      
+        
+        this.storeLocally();   
       }
       else { 
         console.log("invalid search")
         this.validSearch = false;
       }
     })
+  }
 
+  toggleForm() {
+    this.formVisible = !this.formVisible;
+    console.log(this.formVisible)
   }
 
   storeLocally(): void {
@@ -72,7 +85,9 @@ export class StartComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.validSearch) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }

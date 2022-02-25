@@ -11,13 +11,13 @@ export class TeamComponent implements OnInit {
   @Input() teamData!: any[];
   @Input() logo!: string;
   @Input() stadiumImg!: string;
+  @Input() stadium!: string;
 
-  validSearch: boolean = true;
   teamIds!: any[];
 
   constructor() { }
 
-  ngOnInit(): void {  
+  ngOnInit(): void {
   }
 
 }

@@ -34,7 +34,10 @@ export class SquadComponent implements OnInit {
         let teamId = obj[1];
         this.fetchSquad(teamId)
       }
-    }    
+    }
+    else {
+      this.validSearch = false;
+    }   
   }
 
   fetchSquad(teamId: string) {
@@ -65,7 +68,11 @@ export class SquadComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    // validSearch is set to true only if we perform teamSearch(), if we dont do teamSerch()
+    // subscription will never be set and so it would be undefined in here
+    if (this.validSearch) {
+      this.subscription.unsubscribe();
+    }
   }
 
 }

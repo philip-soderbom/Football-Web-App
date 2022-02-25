@@ -1,17 +1,22 @@
-<div *ngIf="validSearch">
-    <h1>Some basic information about {{teamName}}:</h1>
-    <div>
+<div class="team-grid">
+
+    <div class="info">
+        <h1>Information about {{teamName}}:</h1>
         <ul *ngFor="let data of teamData">
-            <li>{{data[0]}}: {{data[1]}}</li>
+            <li>
+                <h3>{{data[0]}}: {{data[1]}}</h3>
+            </li>
         </ul>
     </div>
 
 
-    <img [src]="logo" alt="">
-    <img [src]="stadiumImg" alt="">
-</div>
+    <div class="logo">
+        <img id="logo" [src]="logo" alt="team logo">
+    </div>
 
-<div *ngIf="!validSearch">
-    <h1>You have not searched for any team yet</h1>
-    <a routerLink="/">Go to Start</a>
+    <div class="stadium">
+        <h1>This is {{stadium}}</h1>
+        <img id="stadium" [src]="stadiumImg" alt="team stadium">
+    </div>
+
 </div>

@@ -10,6 +10,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -50,6 +51,7 @@ const appRoutes: Routes = [
     MatTabsModule,
     MatFormFieldModule,
     MatButtonModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
