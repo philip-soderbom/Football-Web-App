@@ -11,6 +11,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -21,11 +23,14 @@ import { SquadComponent } from './components/squad/squad.component';
 import { PlayerCardComponent } from './components/player-card/player-card.component';
 import { PlayerComponent } from './components/player/player.component';
 import { PlayerStatsComponent } from './components/player-stats/player-stats.component';
+import { StandingsComponent } from './components/standings/standings.component';
+import { TableEntryComponent } from './components/table-entry/table-entry.component';
 
 const appRoutes: Routes = [
   {path: '', component: StartComponent},
   {path: 'squad', component: SquadComponent},
   {path: 'player/:id', component: PlayerComponent},
+  {path: 'standings', component: StandingsComponent},
 ]
 
 @NgModule({
@@ -39,6 +44,8 @@ const appRoutes: Routes = [
     PlayerCardComponent,
     PlayerComponent,
     PlayerStatsComponent,
+    StandingsComponent,
+    TableEntryComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +59,8 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
+    MatTooltipModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

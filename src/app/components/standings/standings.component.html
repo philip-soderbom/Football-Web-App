@@ -1,0 +1,17 @@
+<div class="league-table">
+    <h1>{{league}} standings</h1>
+    <!-- <mat-card [ngStyle]="{'margin': '10px 0'}" *ngFor="let entry of table">{{entry.team.name}}</mat-card> -->
+    <div class="info-bar">
+        <mat-icon [matTooltip]="tableDescription()">info</mat-icon>
+        <p [ngStyle]="{'margin': '0 45px 0 20px'}">Form</p>
+        <p>P</p>
+        <p>W</p>
+        <p>D</p>
+        <p>L</p>
+        <p>Goals</p>
+        <p>GD</p>
+        <p>Pts</p>
+    </div>
+
+    <app-table-entry [ngStyle]="{'margin': '10px 0'}" [table]="table" [teamSearched]="teamSearched"></app-table-entry>
+</div>

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  links: any[] = [['Start', '/'], ['Squad', '/squad']];
+  links: any[] = [['Start', '/'], ['Squad', '/squad'], ['Standings', '/standings']];
   activeLink!: string;
   currentSearch!: string;
   bgColor: string = 'blue';
@@ -28,6 +28,4 @@ export class HeaderComponent implements OnInit {
   changeActive(newActive: string) {
     this.activeLink = newActive;
   }
-
-
 }

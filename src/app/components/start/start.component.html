@@ -2,9 +2,8 @@
 
     <div class="start-form">
         <h1>Start</h1>
-        <app-form *ngIf="formVisible" (onSearch)="searchTeam($event)"></app-form>
-        <!-- <button mat-flat-button [color]="formVisible ? 'warn' : 'primary'" (click)="toggleForm()">{{formVisible ? 'Close form' : 'Open form'}}</button> -->
-        <button mat-flat-button [ngStyle]="{'background-color': formVisible ? '#F44336' : '#4CAF50'}" (click)="toggleForm()">{{formVisible ? 'Close form' : 'Open form'}}</button>
+        <app-form (onSearch)="searchTeam($event)"></app-form>
+        <!-- <button mat-flat-button [ngStyle]="{'background-color': formVisible ? '#F44336' : '#4CAF50'}" (click)="toggleForm()">{{formVisible ? 'Close form' : 'Open form'}}</button> -->
     </div>
 
 

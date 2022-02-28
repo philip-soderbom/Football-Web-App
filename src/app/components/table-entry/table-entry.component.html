@@ -1,0 +1,20 @@
+<div class="table-entry-card" *ngFor="let entry of table" [ngStyle]="styleEntry(table, entry.rank)">
+    <div class="left">
+        <h1>{{entry.rank}}</h1>
+        <img [src]="entry.team.logo" alt="">
+        <div [ngStyle]="styleNaming(entry)">{{entry.team.name}}</div>
+    </div>
+
+    <div class="right">
+        <div [ngStyle]="styleFormContainer()">
+            <p *ngFor="let f of convertToArray(entry.form)" [ngStyle]="styleForm(f)">{{f}}</p>
+        </div>
+        <div>{{entry.all.played}}</div>
+        <div>{{entry.all.win}}</div>
+        <div>{{entry.all.draw}}</div>
+        <div>{{entry.all.lose}}</div>
+        <div>{{entry.all.goals.for}}-{{entry.all.goals.against}}</div>
+        <div>{{entry.goalsDiff}}</div>
+        <div [ngStyle]=" { 'font-weight': 'bold'} ">{{entry.points}}</div>
+    </div>
+</div>

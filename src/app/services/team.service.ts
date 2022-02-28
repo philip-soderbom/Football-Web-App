@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { Team } from '../interfaces/Team'
 import { Squad } from '../interfaces/Squad'
 import { Player } from '../interfaces/Player';
+import { League } from '../interfaces/League';
+import { Standings } from '../interfaces/Standings';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -35,5 +37,16 @@ export class TeamService {
   getPlayer(search: string): Observable<Player> {
     let url = this.apiBaseURL.concat('players?id=' + search + '&season=2021')
     return this.http.get<Player>(url, httpOptions)
+  }
+
+  getLeague(teamId: string): Observable<League> {
+    let url = this.apiBaseURL.concat('leagues?team=' + teamId + '&season=2021&type=league')
+    return this.http.get<League>(url, httpOptions)
+  }
+
+  getStandings(leagueId: string): Observable<Standings> {
+    let url = this.apiBaseURL.concat('standings?season=2021&league=' + leagueId)
+    return this.http.get<Standings>(url, httpOptions)
+
   }
 }

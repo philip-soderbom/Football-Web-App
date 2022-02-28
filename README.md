@@ -1,6 +1,8 @@
-# APIFootball
+# API Fotball Web App
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
+
+After cloning repo, run `npm install` inside the cloned folder to install the needed node_modules. Then running `ng serve` should be working!
 
 ## Development server
 
