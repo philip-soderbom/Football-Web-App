@@ -1,6 +1,6 @@
 import { Time } from "@angular/common"
 
-export interface League {
+export interface Fixtures {
     response: [{
         fixture: {
             id: number,

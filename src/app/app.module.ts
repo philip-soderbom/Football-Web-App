@@ -33,12 +33,9 @@ const appRoutes: Routes = [
   { path: 'squad', component: SquadComponent },
   { path: 'player/:id', component: PlayerComponent },
   { path: 'standings', component: StandingsComponent },
-<<<<<<< HEAD
-=======
   { path: 'fixtures', component: FixtureComponent},
   // { path: '404', component: NotFoundComponent },
   //{ path: '**', redirectTo: '/404' }
->>>>>>> 9887952435399ef3b4b28a0f2c9896b2fb266da4
   { path: '**', component: PagenotfoundComponent },
 ]
 

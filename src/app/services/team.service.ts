@@ -6,6 +6,7 @@ import { Squad } from '../interfaces/Squad'
 import { Player } from '../interfaces/Player';
 import { League } from '../interfaces/League';
 import { Standings } from '../interfaces/Standings';
+import { Fixtures } from '../interfaces/Fixtures';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -48,5 +49,13 @@ export class TeamService {
     let url = this.apiBaseURL.concat('standings?season=2021&league=' + leagueId)
     return this.http.get<Standings>(url, httpOptions)
 
+  }
+  getUpcomingFixtures(teamId: string, next: number){
+    let url = this.apiBaseURL.concat('fixtures?season=2021&team='+teamId+'&next=' + next);
+    return this.http.get<Fixtures>(url, httpOptions)
+  }
+  getPastFixtures(teamId: string, past: number){
+    let url = this.apiBaseURL.concat('fixtures?season=2021&team='+teamId+'&last=' + past);
+    return this.http.get<Fixtures>(url, httpOptions)
   }
 }
