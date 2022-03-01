@@ -25,12 +25,16 @@ import { PlayerComponent } from './components/player/player.component';
 import { PlayerStatsComponent } from './components/player-stats/player-stats.component';
 import { StandingsComponent } from './components/standings/standings.component';
 import { TableEntryComponent } from './components/table-entry/table-entry.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const appRoutes: Routes = [
-  {path: '', component: StartComponent},
-  {path: 'squad', component: SquadComponent},
-  {path: 'player/:id', component: PlayerComponent},
-  {path: 'standings', component: StandingsComponent},
+  { path: '', component: StartComponent },
+  { path: 'squad', component: SquadComponent },
+  { path: 'player/:id', component: PlayerComponent },
+  { path: 'standings', component: StandingsComponent },
+  // { path: '404', component: NotFoundComponent },
+  //{ path: '**', redirectTo: '/404' }
+  { path: '**', component: PagenotfoundComponent },
 ]
 
 @NgModule({
