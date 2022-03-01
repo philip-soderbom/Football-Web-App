@@ -1,7 +1,8 @@
-import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { CommonModule } from '@angular/common';
 import { TeamService } from 'src/app/services/team.service';
+
 @Component({
   selector: 'app-fixture',
   templateUrl: './fixture.component.html',
@@ -10,7 +11,7 @@ import { TeamService } from 'src/app/services/team.service';
 export class FixtureComponent implements OnInit {
   private subscription!: Subscription;
 
-  table!: any[];
+  Teams!: any[];
   league!: string;
   teamSearched!: string;
   constructor(private teamServce: TeamService) { }
@@ -29,9 +30,20 @@ export class FixtureComponent implements OnInit {
   }
 
   fetchFixtures(teamId: string, count: number, future: boolean){
+    var homeTeam;
+    var awayTeam;
     if(future){
       this.subscription = this.teamServce.getUpcomingFixtures(teamId, count).subscribe(data => {
-
+        for(var i = 0; i < data.response.length; i++){
+        homeTeam = data.response[i].teams.home;
+        awayTeam = data.response[i].teams.away;
+        if(!this.Teams){
+          this.Teams = [{homeTeam, awayTeam}];
+        } else {
+        this.Teams.push({homeTeam, awayTeam});
+        }
+        console.log(this.Teams);
+      }
       });
     } else {
       this.subscription = this.teamServce.getPastFixtures(teamId, count).subscribe(data => {

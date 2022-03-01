@@ -1,6 +1,12 @@
-<div>
-    <div>
-    <p>Match 1</p>
+<div class="container">
+    <div class = "custom-select">
+        <select>
+            <option value = "true">Upcoming matches</option>
+            <option value = "false">Past matches </option>
+        </select>
+    </div>
+    <div *ngFor="let team of Teams">
+        {{team.homeTeam.name}} vs {{team.awayTeam.name}}
     </div>
     <div>
     <p>Match 2</p>

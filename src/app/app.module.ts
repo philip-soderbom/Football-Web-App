@@ -13,8 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
-
 import { AppComponent } from './app.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { HeaderComponent } from './components/header/header.component';
 import { TeamComponent } from './components/team/team.component';
 import { FormComponent } from './components/form/form.component';
@@ -27,6 +27,8 @@ import { StandingsComponent } from './components/standings/standings.component';
 import { TableEntryComponent } from './components/table-entry/table-entry.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { FixtureComponent } from './components/fixture/fixture.component';
+
+
 
 const appRoutes: Routes = [
   { path: '', component: StartComponent },
@@ -51,6 +53,7 @@ const appRoutes: Routes = [
     PlayerComponent,
     PlayerStatsComponent,
     StandingsComponent,
+    FixtureComponent,
     TableEntryComponent,
   ],
   imports: [
@@ -66,7 +69,8 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatInputModule,
     MatTooltipModule,
-    MatIconModule
+    MatIconModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,14 @@
+/* The container must be positioned relative: */
+.custom-select {
+    position: relative;
+    font-family: Arial;
+    width: max-content;
+  }
+  
+  .custom-select select {
+    display: all; /*hide original SELECT element: */
+  }
+  .custom-select option {
+      color: black;
+  }
+  
