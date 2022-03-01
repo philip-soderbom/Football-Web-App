@@ -32,8 +32,6 @@ const appRoutes: Routes = [
   { path: 'squad', component: SquadComponent },
   { path: 'player/:id', component: PlayerComponent },
   { path: 'standings', component: StandingsComponent },
-  // { path: '404', component: NotFoundComponent },
-  //{ path: '**', redirectTo: '/404' }
   { path: '**', component: PagenotfoundComponent },
 ]
 

@@ -4,7 +4,8 @@
     <div class="inner-form">
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label for="teamSearch">Team search</mat-label>
-            <input matInput [(ngModel)]="teamSearch" placeholder="Ex. Real Madrid" type="text" name="teamSearch" id="teamSearch">
+            <input matInput [(ngModel)]="teamSearch" placeholder="Ex. Real Madrid" type="text" name="teamSearch"
+                id="teamSearch" ngModel minlength="1">
         </mat-form-field><br>
         <button mat-flat-button color="primary" type="submit">Search</button>
     </div>
