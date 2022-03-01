@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class = "custom-select">
         <select>
             <option value = "true">Upcoming matches</option>
@@ -11,4 +11,32 @@
     <div>
     <p>Match 2</p>
     </div>
+</div> -->
+
+<form (ngSubmit)="onFixtureSubmit()">
+    <div class="inner-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Select number of fixtures</mat-label>
+            <mat-select [(value)]="selected">
+                <mat-option *ngFor="let option of options" value="{{option}}">{{option}}</mat-option>
+            </mat-select>
+        </mat-form-field><br>
+        <mat-radio-button [checked]="futureFixture" (change)="onRadioChange('upcoming')" color="primary">Upcoming</mat-radio-button>
+        <mat-radio-button (change)="onRadioChange('previous')" color="primary">Previous</mat-radio-button>
+        <button mat-flat-button color="primary" type="submit">Search fixtures</button>
+    </div>
+</form>
+
+<div *ngFor="let fixt of fixtures">
+    <!-- Här lägger man in en ny komponent typ (<app-fixture-card>) och skickar med variabeln future & fixt för att avgöra vad som ska 
+        displayas, (vill inte visa nåt resultat om matchen är future)
+    -->
+
+    <!-- <app-fixture-card [future]="future" [fixt]="fixt">
+
+    </app-fixture-card> -->
+
+    <p>Home team: {{fixt.teams.home.name}}</p>
+    <p>Away team: {{fixt.teams.away.name}}</p>
+    <p>Fixture date: {{fixt.fixture.date}}</p>
 </div>

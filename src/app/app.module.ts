@@ -13,8 +13,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+
 import { AppComponent } from './app.component';
-import { NgSelectModule } from '@ng-select/ng-select';
 import { HeaderComponent } from './components/header/header.component';
 import { TeamComponent } from './components/team/team.component';
 import { FormComponent } from './components/form/form.component';
@@ -36,8 +38,6 @@ const appRoutes: Routes = [
   { path: 'player/:id', component: PlayerComponent },
   { path: 'standings', component: StandingsComponent },
   { path: 'fixtures', component: FixtureComponent},
-  // { path: '404', component: NotFoundComponent },
-  //{ path: '**', redirectTo: '/404' }
   { path: '**', component: PagenotfoundComponent },
 ]
 
@@ -70,7 +70,8 @@ const appRoutes: Routes = [
     MatInputModule,
     MatTooltipModule,
     MatIconModule,
-    NgSelectModule
+    MatSelectModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
