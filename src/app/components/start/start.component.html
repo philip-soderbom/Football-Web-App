@@ -3,12 +3,10 @@
     <div class="start-form">
         <h1>Start</h1>
         <app-form (onSearch)="searchTeam($event)"></app-form>
-        <!-- <button mat-flat-button [ngStyle]="{'background-color': formVisible ? '#F44336' : '#4CAF50'}" (click)="toggleForm()">{{formVisible ? 'Close form' : 'Open form'}}</button> -->
     </div>
 
 
     <div *ngIf="validSearch">
-        <!-- <h2>Current team searched for: {{teamName}}</h2> -->
         <div class="start-team">
             <app-team [teamName]="teamName" [teamData]="teamDisplayData" [logo]="teamLogo" [stadium]="stadium" [stadiumImg]="stadiumImage"></app-team>
         </div>

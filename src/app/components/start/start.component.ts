@@ -11,7 +11,6 @@ export class StartComponent implements OnInit {
   private subscription!: Subscription;
 
   validSearch: boolean = true;
-  // formVisible: boolean = true;
   teamId!: number;
   teamName!: string;
   teamDisplayData!: any[];
@@ -23,7 +22,6 @@ export class StartComponent implements OnInit {
 
   ngOnInit(): void {
     if (window.localStorage.length > 0) {
-      // this.formVisible = false;
       let teamSearch = window.localStorage.getItem('search');
       if (typeof teamSearch === 'string') {
         let obj: string[] = JSON.parse(teamSearch);
@@ -43,7 +41,6 @@ export class StartComponent implements OnInit {
       this.subscription = this.teamService.getTeam(search).subscribe(data => {
         if (data.response.length > 0) {
           this.validSearch = true;
-          //this.formVisible = false;
 
           console.log("fetched data: ", data);
           console.log("team searched for (in start.ts): ", data.response[0].team.name);
@@ -76,10 +73,6 @@ export class StartComponent implements OnInit {
     }
   }
 
-  // toggleForm() {
-  //   this.formVisible = !this.formVisible;
-  //   console.log(this.formVisible)
-  // }
 
   storeLocally(): void {
     console.log("Storing %s to localStorage", this.teamName)
