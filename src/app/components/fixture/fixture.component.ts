@@ -15,28 +15,35 @@ export class FixtureComponent implements OnInit {
   futureFixture: boolean = true;
   options: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
+  teamId!: string;
+
   constructor(private teamServce: TeamService) { }
 
-
-  onFixtureSubmit() {
-    console.log("selected: ", this.selected)
+  ngOnInit(): void {
     if (window.localStorage.length > 0) {
       let teamSearch = window.localStorage.getItem('search');
       if (typeof teamSearch === 'string') {
         let obj: string[] = JSON.parse(teamSearch);
-        let teamId = obj[1];
-        this.fetchFixtures(teamId, this.selected, this.futureFixture);
+        this.teamId = obj[1];
       }
     }
   }
 
-  onRadioChange(type: string) {
-    if (type === 'upcoming') this.futureFixture = true;
-    else if (type === 'previous') this.futureFixture = false;
-    console.log("futureFixture?: ", this.futureFixture)
+  onFixtureSubmit() {
+    this.fetchFixtures(this.teamId, this.selected, this.futureFixture);
   }
 
-  ngOnInit(): void {}
+  onRadioChange(type: string) {
+    if (type === 'upcoming') {
+      this.futureFixture = true;
+      this.fetchFixtures(this.teamId, this.selected, this.futureFixture)
+    }
+    else if (type === 'previous') {
+      this.futureFixture = false;
+      this.fetchFixtures(this.teamId, this.selected, this.futureFixture)
+    }
+    console.log("futureFixture?: ", this.futureFixture)
+  }
 
   fetchFixtures(teamId: string, count: number, futureFixture: boolean){
     if(futureFixture){
@@ -57,7 +64,6 @@ export class FixtureComponent implements OnInit {
     if (this.subscription !== undefined) {
       this.subscription.unsubscribe();
     }
-    
   }
 }
 
