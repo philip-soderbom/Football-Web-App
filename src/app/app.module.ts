@@ -26,12 +26,14 @@ import { PlayerStatsComponent } from './components/player-stats/player-stats.com
 import { StandingsComponent } from './components/standings/standings.component';
 import { TableEntryComponent } from './components/table-entry/table-entry.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { FixtureComponent } from './components/fixture/fixture.component';
 
 const appRoutes: Routes = [
   { path: '', component: StartComponent },
   { path: 'squad', component: SquadComponent },
   { path: 'player/:id', component: PlayerComponent },
   { path: 'standings', component: StandingsComponent },
+  { path: 'fixtures', component: FixtureComponent},
   // { path: '404', component: NotFoundComponent },
   //{ path: '**', redirectTo: '/404' }
   { path: '**', component: PagenotfoundComponent },
