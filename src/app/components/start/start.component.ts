@@ -37,40 +37,38 @@ export class StartComponent implements OnInit {
   searchTeam(search: string) {
     console.log("you searched for (in start.ts): ", search);
     // fetch from APIFootball
-    if (search.length > 0) {
-      this.subscription = this.teamService.getTeam(search).subscribe(data => {
-        if (data.response.length > 0) {
-          this.validSearch = true;
+    this.subscription = this.teamService.getTeam(search).subscribe(data => {
+      if (data.response.length > 0) {
+        this.validSearch = true;
 
-          console.log("fetched data: ", data);
-          console.log("team searched for (in start.ts): ", data.response[0].team.name);
-          let teamData = data.response[0].team;
-          let venueData = data.response[0].venue;
+        console.log("fetched data: ", data);
+        console.log("team searched for (in start.ts): ", data.response[0].team.name);
+        let teamData = data.response[0].team;
+        let venueData = data.response[0].venue;
 
-          this.teamName = teamData.name;
-          this.teamId = teamData.id;
-          this.teamLogo = teamData.logo;
-          this.stadiumImage = venueData.image;
-          this.stadium = venueData.name;
+        this.teamName = teamData.name;
+        this.teamId = teamData.id;
+        this.teamLogo = teamData.logo;
+        this.stadiumImage = venueData.image;
+        this.stadium = venueData.name;
 
-          this.teamDisplayData = [
-            ["Club name", teamData.name],
-            [teamData.name + " is based in", teamData.country],
-            ["The club was founded in", teamData.founded],
-            ["Home stadium", venueData.name],
-            ["Adress", venueData.address],
-            ["City", venueData.city],
-            ["Stadium capacity", venueData.capacity],
-          ];
+        this.teamDisplayData = [
+          ["Club name", teamData.name],
+          [teamData.name + " is based in", teamData.country],
+          ["The club was founded in", teamData.founded],
+          ["Home stadium", venueData.name],
+          ["Adress", venueData.address],
+          ["City", venueData.city],
+          ["Stadium capacity", venueData.capacity],
+        ];
 
-          this.storeLocally();
-        }
-        else {
-          console.log("invalid search")
-          this.validSearch = false;
-        }
-      })
-    }
+        this.storeLocally();
+      }
+      else {
+        console.log("invalid search")
+        this.validSearch = false;
+      }
+    })
   }
 
 

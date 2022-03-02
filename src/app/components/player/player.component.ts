@@ -29,6 +29,7 @@ export class PlayerComponent implements OnInit {
 
   data!: any[];
   validPlayerId!: boolean;
+  fetchDone: boolean = false;
 
   competitions: string[] = [];
 
@@ -50,10 +51,12 @@ export class PlayerComponent implements OnInit {
   fetchPlayer(search: string): void {
     this.subscription = this.teamService.getPlayer(search).subscribe(data => {
       if (data.response[0] !== undefined) {
+        this.validPlayerId = true;
+        this.fetchDone = true;
+
         console.log("player fetched: ", data.response[0])
         let player = data.response[0].player
         
-        this.validPlayerId = true;
         this.name = player.name;
         this.firstname = player.firstname;
         this.lastname = player.lastname;
@@ -80,6 +83,7 @@ export class PlayerComponent implements OnInit {
       }
       else {
         this.validPlayerId = false;
+        this.fetchDone = true;
       }
     })
   }

@@ -20,4 +20,4 @@
 
 <app-player-stats *ngIf="validPlayerId" [competitions]="competitions" [data]="data"></app-player-stats>
 
-<app-pagenotfound *ngIf="!validPlayerId"></app-pagenotfound>
+<app-pagenotfound *ngIf="!validPlayerId && fetchDone"></app-pagenotfound>
