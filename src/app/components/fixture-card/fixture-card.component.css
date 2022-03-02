@@ -5,13 +5,22 @@
     margin-top: 50px;
 }
 
-.center-text{
+.center-text {
     text-align: center;
 }
 
 .floatLeft {
     float: left;
 }
-.floatRight{
+
+.floatRight {
     float: right;
+}
+
+img.comp-logo {
+    height: 50px;
+}
+
+img {
+    margin: 12px;
 }

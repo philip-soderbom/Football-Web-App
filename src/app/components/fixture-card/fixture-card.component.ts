@@ -26,6 +26,9 @@ export class FixtureCardComponent implements OnInit {
   styleForm(result: string): Object {
     let styleObj = {
       'text-align': 'center',
+      'border-radius': '6px',
+      '-webkit-box-shadow': '1px 5px 4px -6px #000000',
+      'box-shadow': '1px 5px 4px -6px #000000',
       'margin': '0',
       'min-width': '15px',
       'font-weight': 'bold',
