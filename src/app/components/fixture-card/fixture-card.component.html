@@ -1,0 +1,13 @@
+<div>
+    <div class="info"> 
+    <img class="floatLeft"[src]="fixture.teams.home.logo">
+    <img class="floatRight"[src]="fixture.teams.away.logo">
+    <h1 class="header"> {{fixture.teams.home.name}} vs {{fixture.teams.away.name}}</h1>
+    <h2 class="center-text"*ngIf="!future">{{fixture.goals.home+"-"+fixture.goals.away}}</h2>
+    <h2 class="center-text"*ngIf="future">0-0</h2>
+    <h3 class="center-text">{{fixture.fixture.date.substring(0,10)}} @ {{fixture.fixture.date.substring(11,16)}} UTC</h3>
+    
+    </div>
+</div>
+     
+

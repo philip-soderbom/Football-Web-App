@@ -29,6 +29,7 @@ import { StandingsComponent } from './components/standings/standings.component';
 import { TableEntryComponent } from './components/table-entry/table-entry.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { FixtureComponent } from './components/fixture/fixture.component';
+import { FixtureCardComponent } from './components/fixture-card/fixture-card.component';
 
 
 
@@ -55,6 +56,7 @@ const appRoutes: Routes = [
     StandingsComponent,
     FixtureComponent,
     TableEntryComponent,
+    FixtureCardComponent,
     PagenotfoundComponent,
   ],
   imports: [

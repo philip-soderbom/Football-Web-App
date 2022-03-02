@@ -31,11 +31,9 @@
     <!-- Här lägger man in en ny komponent typ (<app-fixture-card>) och skickar med variabeln future & fixt för att avgöra vad som ska 
         displayas, (vill inte visa nåt resultat om matchen är future)
     -->
-
+    <app-fixture-card [future] = "futureFixture" [fixture] = "fixt">
+        
+    </app-fixture-card>
     <!-- <app-fixture-card [future]="futureFixture" [fixture]="fixt">
     </app-fixture-card> -->
-
-    <p>Home team: {{fixt.teams.home.name}}</p>
-    <p>Away team: {{fixt.teams.away.name}}</p>
-    <p>Fixture date: {{fixt.fixture.date}}</p>
 </div>
