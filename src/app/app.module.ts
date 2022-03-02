@@ -27,7 +27,7 @@ import { PlayerComponent } from './components/player/player.component';
 import { PlayerStatsComponent } from './components/player-stats/player-stats.component';
 import { StandingsComponent } from './components/standings/standings.component';
 import { TableEntryComponent } from './components/table-entry/table-entry.component';
-import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { FixtureComponent } from './components/fixture/fixture.component';
 
 
@@ -55,6 +55,7 @@ const appRoutes: Routes = [
     StandingsComponent,
     FixtureComponent,
     TableEntryComponent,
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule,

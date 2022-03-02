@@ -28,6 +28,7 @@ export class PlayerComponent implements OnInit {
   photo!: string;
 
   data!: any[];
+  validPlayerId!: boolean;
 
   competitions: string[] = [];
 
@@ -52,6 +53,7 @@ export class PlayerComponent implements OnInit {
         console.log("player fetched: ", data.response[0])
         let player = data.response[0].player
         
+        this.validPlayerId = true;
         this.name = player.name;
         this.firstname = player.firstname;
         this.lastname = player.lastname;
@@ -75,6 +77,9 @@ export class PlayerComponent implements OnInit {
             this.competitions.push(comp.league.name)
           }
         })
+      }
+      else {
+        this.validPlayerId = false;
       }
     })
   }
