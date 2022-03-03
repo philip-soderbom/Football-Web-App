@@ -16,6 +16,7 @@ export class FixtureComponent implements OnInit {
   options: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   teamId!: string;
+  teamName!: string;
 
   constructor(private teamServce: TeamService) { }
 
@@ -25,12 +26,16 @@ export class FixtureComponent implements OnInit {
       if (typeof teamSearch === 'string') {
         let obj: string[] = JSON.parse(teamSearch);
         this.teamId = obj[1];
+        this.teamName = obj[0];
       }
     }
   }
 
   onFixtureSubmit() {
-    this.fetchFixtures(this.teamId, this.selected, this.futureFixture);
+    // fetch fixtures only if an option is selected
+    if (this.selected !== undefined) {
+      this.fetchFixtures(this.teamId, this.selected, this.futureFixture);
+    }
   }
 
   onRadioChange(type: string) {

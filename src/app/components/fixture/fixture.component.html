@@ -13,6 +13,8 @@
     </div>
 </div> -->
 
+<h1>{{teamName}} fixtures</h1>
+
 <form (ngSubmit)="onFixtureSubmit()">
     <div class="inner-form">
         <mat-form-field class="example-full-width" appearance="fill">
@@ -22,7 +24,7 @@
             </mat-select>
         </mat-form-field><br>
         <mat-radio-button [checked]="futureFixture" (change)="onRadioChange('upcoming')" color="primary">Upcoming</mat-radio-button>
-        <mat-radio-button (change)="onRadioChange('previous')" color="primary">Previous</mat-radio-button>
+        <mat-radio-button (change)="onRadioChange('previous')" color="primary">Previous</mat-radio-button><br>
         <button mat-flat-button color="primary" type="submit">Search fixtures</button>
     </div>
 </form>
@@ -31,8 +33,8 @@
     <!-- Här lägger man in en ny komponent typ (<app-fixture-card>) och skickar med variabeln future & fixt för att avgöra vad som ska 
         displayas, (vill inte visa nåt resultat om matchen är future)
     -->
-    <app-fixture-card [future] = "futureFixture" [fixture] = "fixt">
-        
+    <app-fixture-card [future]="futureFixture" [fixture]="fixt">
+
     </app-fixture-card>
     <!-- <app-fixture-card [future]="futureFixture" [fixture]="fixt">
     </app-fixture-card> -->
