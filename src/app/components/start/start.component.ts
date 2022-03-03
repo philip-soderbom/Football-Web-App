@@ -42,7 +42,7 @@ export class StartComponent implements OnInit {
         this.validSearch = true;
 
         console.log("fetched data: ", data);
-        console.log("team searched for (in start.ts): ", data.response[0].team.name);
+        //console.log("team searched for (in start.ts): ", data.response[0].team.name);
         let teamData = data.response[0].team;
         let venueData = data.response[0].venue;
 

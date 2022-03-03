@@ -9,8 +9,6 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 export class FormComponent implements OnInit {
   @Output() onSearch: EventEmitter<string> = new EventEmitter();
 
-  teamSearch!: string;
-
   formGroup!: FormGroup;
   searchField: FormControl = new FormControl('', [Validators.required, Validators.minLength(3)])
  
@@ -24,14 +22,17 @@ export class FormComponent implements OnInit {
   }
 
   onTeamSearch() {
-    console.log("team search in form.ts: ", this.teamSearch)
-    console.log("test", this.searchField.value)
+    //console.log("team search in form.ts: ", this.teamSearch)
+    console.log("team searched for: ", this.searchField.value)
     
     let search = this.searchField.value
     // emitting to parent (start.component.html)
     this.onSearch.emit(search)
-    //this.teamSearch = "";
-    this.formGroup.reset();
+    //this.formGroup.reset();
+    //this.searchField.reset();
+  }
+
+  clearOnFocus() {
     this.searchField.reset();
   }
 

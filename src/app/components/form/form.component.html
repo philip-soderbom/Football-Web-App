@@ -1,21 +1,10 @@
 <h2>Search for a football team here: </h2>
 
-<!-- <form (ngSubmit)="onTeamSearch()">
-    <div class="inner-form">
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label for="teamSearch">Team search</mat-label>
-            <input matInput [(ngModel)]="teamSearch" placeholder="Ex. Real Madrid" type="text" name="teamSearch" id="teamSearch" ngModel minlength="1">
-        </mat-form-field><br>
-        <button mat-flat-button color="primary" type="submit">Search</button>
-    </div>
-</form> -->
-
-
 <form [formGroup]="formGroup" (ngSubmit)="onTeamSearch()">
     <div class="inner-form">
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label for="teamSearch">Team search</mat-label>
-            <input required matInput [formControl]="searchField" placeholder="Ex. Real Madrid" name="teamSearch">
+            <input required matInput [formControl]="searchField" (focus)="clearOnFocus()" placeholder="Ex. Real Madrid" name="teamSearch">
             <mat-error *ngIf="searchField.invalid">{{getErrorMessage(searchField)}}</mat-error>
         </mat-form-field><br>
         <button mat-flat-button color="primary" type="submit" [disabled]="searchField.invalid">Search</button>
